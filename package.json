@@ -9,7 +9,9 @@
     "lint": "eslint --ext js --ext jsx src || exit 0",
     "dev": " webpack-dashboard -- webpack-dev-server --mode development",
     "test": "export NODE_ENV=test && jest",
-    "pretty": "prettier --print-width 100 --single-quote all --write \"src/**/*.js\""
+    "pretty": "prettier --print-width 100 --single-quote all --write \"src/**/*.js\"",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",
@@ -38,6 +40,10 @@
     ]
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^5.2.3",
+    "@storybook/addon-links": "^5.2.3",
+    "@storybook/addons": "^5.2.3",
+    "@storybook/react": "^5.2.3",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^10.0.1",
@@ -51,12 +57,12 @@
     "enzyme": "^3.2.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "4.19.1",
-    "eslint-plugin-jsx-a11y": "^6.1.2",
-    "eslint-plugin-jest": "^21.5.0",
     "eslint-config-airbnb": "^17.1.0",
-    "eslint-plugin-react": "7.11.1",
-    "eslint-plugin-import": "2.14.0",
     "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-import": "2.14.0",
+    "eslint-plugin-jest": "^21.5.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "7.11.1",
     "file-loader": "1.1.11",
     "html-loader": "0.4.5",
     "html-webpack-plugin": "3.2.0",

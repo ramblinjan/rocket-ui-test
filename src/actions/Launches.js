@@ -1,8 +1,8 @@
-import LaunchService from '../services/LaunchService';
+import LaunchService from "../services/LaunchService";
 
 export const ACTIONS = {
-  REQUEST_LAUNCHES: 'REQUEST_LAUNCHES',
-  RECEIVE_LAUNCHES: 'RECEIVE_LAUNCHES'
+  REQUEST_LAUNCHES: "REQUEST_LAUNCHES",
+  RECEIVE_LAUNCHES: "RECEIVE_LAUNCHES"
 };
 
 export const requestLaunches = () => ({
@@ -12,16 +12,19 @@ export const requestLaunches = () => ({
 const receiveLaunches = response => ({
   type: ACTIONS.RECEIVE_LAUNCHES,
   payload: {
-    launches: response.data
+    launches: console.log(response.data) || response.data
   }
 });
 
 export const fetchLaunches = dispatch => {
   dispatch(requestLaunches());
-  return LaunchService.get().then(response => dispatch(receiveLaunches(response)));
+  return LaunchService.get().then(response =>
+    dispatch(receiveLaunches(response))
+  );
 };
 
-const shouldFetchLaunches = launchCollection => !launchCollection || !launchCollection.fetching;
+const shouldFetchLaunches = launchCollection =>
+  !launchCollection || !launchCollection.fetching;
 
 export const fetchLaunchesIfNeeded = ({ dispatch, launchCollection }) =>
   shouldFetchLaunches(launchCollection) && fetchLaunches(dispatch);
